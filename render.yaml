@@ -28,16 +28,3 @@ services:
       - key: EMAIL_ADDRESS
         sync: false   # Your email address for nodemailer
 
-  # Keep-alive cron job: pings the portfolio every 5 minutes to prevent sleep
-  - type: cron
-    name: rohit-portfolio-keepalive
-    runtime: image
-    image:
-      url: curlimages/curl:latest
-    region: singapore
-    plan: free
-    schedule: "*/5 * * * *"
-    command: curl --fail https://rohit-portfolio.onrender.com/ || echo "Ping failed - service may be starting up"
-    envVars:
-      - key: PORTFOLIO_URL
-        sync: false   # Set this to your actual Render web service URL
