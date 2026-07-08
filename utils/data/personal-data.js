@@ -8,12 +8,9 @@ export const personalData = {
   phone: "+91 9760708633",
   address: "Mathura, Uttar Pradesh, India",
   github: "https://github.com/rsbamil",
-  facebook: "https://www.facebook.com/abusaid.riyaz/",
-  linkedIn: "https://www.linkedin.com/in/rohit-kumar-05697a372",
-  twitter: "https://twitter.com/said7388",
-  stackOverflow: "https://stackoverflow.com/users/16840768/abu-said",
+  linkedIn: "https://www.linkedin.com/in/rohitkummarrr",
   leetcode: "https://leetcode.com/u/Rohit_kumar_45/",
   devUsername: "rohit9456",
   resume:
-    "https://drive.google.com/file/d/1rYTA7T4jcTBwYpiynkNDDFc6PoWw61a-/view?usp=sharing",
+    "https://drive.google.com/file/d/1NKWSbrvIfMg3JJOcLYE3RH98q1mxrc6u/view?usp=sharing",
 };

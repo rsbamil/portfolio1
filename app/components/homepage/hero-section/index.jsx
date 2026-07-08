@@ -135,6 +135,16 @@ function HeroSection() {
                 <span className="text-amber-300">Lightswind UI</span>
                 <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">AWS</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">Dotnet</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">ASP.Net Core Web Api</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">C#</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">ADO.Net</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">Entity Framework</span>
                 <span className="text-gray-400">{"'],"}</span>
               </div>
               <div>
