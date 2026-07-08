@@ -13,6 +13,10 @@ FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
+# Bind to all interfaces so Render can reach the app
+ENV HOSTNAME=0.0.0.0
+# Render injects PORT at runtime; default to 3000 for local use
+ENV PORT=3000
 
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
