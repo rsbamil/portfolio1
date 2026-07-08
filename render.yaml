@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: rohit-portfolio
+    runtime: docker
+    dockerfilePath: ./Dockerfile.prod
+    region: singapore
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: NEXT_PUBLIC_APP_URL
+        sync: false   # Set this manually in the Render dashboard
+
+      - key: NEXT_PUBLIC_GTM
+        sync: false   # Google Tag Manager ID (optional)
+
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false   # Your Telegram bot token for contact form
+
+      - key: TELEGRAM_CHAT_ID
+        sync: false   # Your Telegram chat ID for contact form
+
+      - key: GMAIL_PASSKEY
+        sync: false   # Gmail app password for nodemailer
+
+      - key: EMAIL_ADDRESS
+        sync: false   # Your email address for nodemailer
+
+  # Keep-alive cron job: pings the portfolio every 5 minutes to prevent sleep
+  - type: cron
+    name: rohit-portfolio-keepalive
+    runtime: image
+    image:
+      url: curlimages/curl:latest
+    region: singapore
+    plan: free
+    schedule: "*/5 * * * *"
+    command: curl --fail https://rohit-portfolio.onrender.com/ || echo "Ping failed - service may be starting up"
+    envVars:
+      - key: PORTFOLIO_URL
+        sync: false   # Set this to your actual Render web service URL
