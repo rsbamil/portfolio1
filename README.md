@@ -26,28 +26,28 @@ A personal developer portfolio built with **Next.js 15** and **Tailwind CSS**, s
 
 ## 🗂️ Sections
 
-| Section | Description |
-|---|---|
-| 🦸 **Hero** | Introduction, tech stack, and quick links |
-| 👤 **About Me** | Personal summary and background |
-| 💼 **Experience** | Work history and roles |
-| 🛠️ **Skills** | Technology stack with icons |
-| 🚀 **Projects** | Featured projects with live demos and source code |
-| 🎓 **Education** | Academic background |
-| 📝 **Blog** | Latest posts fetched from dev.to |
-| 📬 **Contact** | Working contact form via Gmail / Telegram |
+| Section           | Description                                       |
+| ----------------- | ------------------------------------------------- |
+| 🦸 **Hero**       | Introduction, tech stack, and quick links         |
+| 👤 **About Me**   | Personal summary and background                   |
+| 💼 **Experience** | Work history and roles                            |
+| 🛠️ **Skills**     | Technology stack with icons                       |
+| 🚀 **Projects**   | Featured projects with live demos and source code |
+| 🎓 **Education**  | Academic background                               |
+| 📝 **Blog**       | Latest posts fetched from dev.to                  |
+| 📬 **Contact**    | Working contact form via Gmail / Telegram         |
 
 ---
 
 ## 🚀 Featured Projects
 
-| # | Project | Stack | Links |
-|---|---|---|---|
-| 1 | **AI Career Helper** | Next.js, TypeScript, MongoDB, OpenAI API | [Code](https://github.com/rsbamil/Ai-Career-Coach) |
-| 2 | **Hospital Management System** | React, Express, MongoDB, Tailwind | [Code](https://github.com/rsbamil/Hospital-Management-System) · [Demo](https://hospital-management-system-xi-three.vercel.app/) |
-| 3 | **Mocktail Animations** | React, Framer Motion, GSAP | [Code](https://github.com/rsbamil/mocktail) · [Demo](https://mocktail-steel.vercel.app/) |
-| 4 | **Media Player App** | React, Redux, JWT, Tailwind | [Code](https://github.com/rsbamil/Media-Player) |
-| 5 | **ConnectSphere** | React, ASP.NET Core, PostgreSQL, RabbitMQ, Redis | [Code](https://github.com/rsbamil/ConnectSphere) · [Demo](https://cs-frontend-2rox.onrender.com) |
+| #   | Project                        | Stack                                            | Links                                                                                                                           |
+| --- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | **AI Career Helper**           | Next.js, TypeScript, MongoDB, OpenAI API         | [Code](https://github.com/rsbamil/Ai-Career-Coach)                                                                              |
+| 2   | **Hospital Management System** | React, Express, MongoDB, Tailwind                | [Code](https://github.com/rsbamil/Hospital-Management-System) · [Demo](https://hospital-management-system-xi-three.vercel.app/) |
+| 3   | **Mocktail Animations**        | React, Framer Motion, GSAP                       | [Code](https://github.com/rsbamil/mocktail) · [Demo](https://mocktail-steel.vercel.app/)                                        |
+| 4   | **Media Player App**           | React, Redux, JWT, Tailwind                      | [Code](https://github.com/rsbamil/Media-Player)                                                                                 |
+| 5   | **ConnectSphere**              | React, ASP.NET Core, PostgreSQL, RabbitMQ, Redis | [Code](https://github.com/rsbamil/ConnectSphere) · [Demo](https://cs-frontend-2rox.onrender.com)                                |
 
 ---
 
@@ -77,15 +77,15 @@ npm install
 
 ### Configure Environment Variables
 
-Create a `.env.local` file in the root directory:
+Create a `.env.local` file in the root directory (copy `.env.example`):
 
 ```env
-NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_GTM=
 TELEGRAM_BOT_TOKEN=
 TELEGRAM_CHAT_ID=
 GMAIL_PASSKEY=
 EMAIL_ADDRESS=
+RECAPTCHA_SECRET_KEY=
 ```
 
 ### Run Development Server
@@ -120,6 +120,32 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
+## ▲ Deploy to Vercel
+
+Vercel detects this Next.js project automatically; no custom build or output
+directory settings are required.
+
+1. Push the repository to GitHub.
+2. In [Vercel](https://vercel.com/), choose **Add New → Project** and import the repository.
+3. Keep the detected **Next.js** framework preset and default build settings.
+4. Add the following environment variables in **Project → Settings → Environment Variables**:
+
+| Variable               | Required              | Description                                   |
+| ---------------------- | --------------------- | --------------------------------------------- |
+| `TELEGRAM_BOT_TOKEN`   | Yes, for contact form | Telegram bot token from @BotFather            |
+| `TELEGRAM_CHAT_ID`     | Yes, for contact form | Telegram destination chat ID                  |
+| `GMAIL_PASSKEY`        | Yes, for contact form | Gmail App Password                            |
+| `EMAIL_ADDRESS`        | Yes, for contact form | Gmail address used to send messages           |
+| `NEXT_PUBLIC_GTM`      | Optional              | Google Tag Manager container ID               |
+| `RECAPTCHA_SECRET_KEY` | Optional              | Server-side reCAPTCHA secret; keep it private |
+
+5. Apply the variables to **Production**, and to **Preview**/**Development** if needed, then deploy. Redeploy after changing environment variables.
+
+The contact form calls the relative `/api/contact` endpoint, so a public site URL
+environment variable is not needed. Do not use the `NEXT_PUBLIC_` prefix for
+secrets. The project uses Node.js 20 or 22; Vercel can select this from the
+`engines` setting in `package.json`.
+
 ## ☁️ Deploy to Render
 
 This project includes a `render.yaml` **Blueprint** for one-click deployment.
@@ -132,13 +158,12 @@ This project includes a `render.yaml` **Blueprint** for one-click deployment.
 4. Click **Apply** to create the service
 5. Go to **Service → Environment** and fill in your secret variables:
 
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_APP_URL` | Your Render URL (e.g. `https://rohit-portfolio.onrender.com`) |
+| Variable             | Description                                           |
+| -------------------- | ----------------------------------------------------- |
 | `TELEGRAM_BOT_TOKEN` | From [@BotFather](https://t.me/BotFather) on Telegram |
-| `TELEGRAM_CHAT_ID` | Your Telegram chat ID |
-| `GMAIL_PASSKEY` | Gmail App Password (16-char) |
-| `EMAIL_ADDRESS` | Your Gmail address |
+| `TELEGRAM_CHAT_ID`   | Your Telegram chat ID                                 |
+| `GMAIL_PASSKEY`      | Gmail App Password (16-char)                          |
+| `EMAIL_ADDRESS`      | Your Gmail address                                    |
 
 6. Trigger a **Manual Deploy** — your portfolio goes live 🎉
 
